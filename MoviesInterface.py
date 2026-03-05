@@ -73,11 +73,15 @@ def update_rating():
         print("Error in updating movie rating")
 
 def delete_movie():
-    """
-    Prompt user for a Movie Title.
-    Delete that item from the database.
-    """
-    print("deleting movie")
+    try:
+        title = input("Please enter movie title: ")
+        table.delete_item(
+            Key={"Title": title},
+        )
+        print(title + " deleted from database")
+    except:
+        print("Error in deleting moovie from database.")
+
 
 def query_movie():
     """
